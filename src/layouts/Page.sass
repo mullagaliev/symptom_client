@@ -1,0 +1,104 @@
+@import "../style/helpers/all"
+
+.Screen
+  height: 100vh
+  padding: $padding 0
+  position: relative
+  overflow: hidden
+  .Header
+    position: relative
+    background-color: white
+    height: $header-h
+    margin-bottom: 10px
+    &Logo
+      +align-center-wh
+      text-align: center
+      a
+        display: inline-block
+      img
+        //background-color: rgba(255, 255, 255, 0.7)
+        padding: 5px
+        width: 191px
+        height: 77px
+  .Content
+    position: relative
+    //padding: ($header-h + $padding-h) 0 56px
+    overflow: hidden
+    overflow-x: hidden
+    height: calc(100% - 120px)
+    &Full
+      position: absolute
+      top: 0
+      left: 0
+      width: 100% !important
+      height: 100%
+      background-color: #007974
+  .Footer
+    text-align: center
+    color: white
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    height: $footer-h
+
+.menu-bottom
+  span, .icon
+    font-size: 11px !important
+  .icon
+    font-size: 13px !important
+  .active
+    border-top: 2px solid $color-accent
+
+
+.main-menu
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 100%
+  +sm
+    width: 70%
+  +md
+    width: 50%
+  .segment
+    min-height: 125px
+    position: relative
+
+.main-menu-item
+  text-align: center
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+
+.copyright
+  font-size: 18px
+  &__team
+    font-weight: 900
+  span
+    margin-right: 10px
+    &:last-child
+      margin-right: 0
+
+.form-login
+  position: absolute
+  min-width: 300px
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+
+.align-center-wh
+  +align-center-wh
+
+.screen-loading
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+.formmmm
+  text-align: center

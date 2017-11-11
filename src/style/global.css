@@ -1,0 +1,41 @@
+@import "margin.css";
+
+.alignCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform-origin: center center;
+        transform: scale(0.8);
+        background-color: yellow;
+    }
+    50% {
+        transform-origin: center center;
+        transform: scale(1.0);
+        background-color: red;
+    }
+}
+
+.pulse {
+    animation: pulse 3s ease infinite alternate,
+    nudge 5s linear infinite alternate;
+}
+
+*{
+    box-sizing: border-box;
+}

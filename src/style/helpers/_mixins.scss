@@ -1,0 +1,51 @@
+@import '../vars';
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: $desktop) { @content ; }
+}
+@else if $point == laptop {
+  @media (min-width: $laptop) and (max-width: $desktop) { @content ; }
+}
+@else if $point == mobile {
+  @media (max-width: $laptop)  { @content ; }
+}
+}
+
+/* alias for breakpoint */
+@mixin md(){
+  @include breakpoint(desktop){
+    @content;
+}
+}
+@mixin sm(){
+  @include breakpoint(laptop){
+    @content;
+}
+}
+@mixin xs(){
+  @include breakpoint(mobile){
+    @content;
+}
+}
+
+@mixin clearfix{
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+}
+
+@mixin align-center-wh(){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin align-center-w(){
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
