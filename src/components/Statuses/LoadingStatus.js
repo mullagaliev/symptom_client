@@ -2,12 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Dimmer, Loader, Image, Segment} from 'semantic-ui-react'
 
-const styles = require('./LoadingStatus.sass');
-
 class LoadingStatus extends Component {
   render() {
     return (
-      <div className={styles.Loading}>
+      <div>
         <Dimmer active>
           <Loader size='massive'>
             Loading...

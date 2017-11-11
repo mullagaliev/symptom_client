@@ -27,11 +27,10 @@ class PhotoModal extends Component {
       size='small'
     >
       <Header icon='help circle' content='Краткая инструкция' />
-      <Modal.Content>
+      <Modal.Content size={'large'}>
         <ol>
-          <li>5 секунд ...</li>
-          <li>После 3-ей секунды </li>
-          <li>Сделать снимок..</li>
+          <li>Найдите место с достаточной освещенностью</li>
+          <li>Сделайте одно своё фото</li>
           <li>Готово</li>
         </ol>
       </Modal.Content>

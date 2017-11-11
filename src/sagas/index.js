@@ -25,10 +25,20 @@ function* fetchLogoutAdmin(action) {
   }
 }
 
+function* fetchSendPhoto(action) {
+  try {
+    const {photo} = action.fields;
+    const response = yield call(Api.sendPhoto, photo);
+    yield put({type: ACTION_TYPES.SEND_PHOTO_FETCH_SUCCEEDED, result: response});
+  } catch (e) {
+    yield put({type: ACTION_TYPES.SEND_PHOTO_FETCH_FAILED, message: e.message});
+  }
+}
 
 function* rootSaga() {
   yield takeLatest(ACTION_TYPES.LOGIN_FETCH_REQUESTED, fetchLoginAdmin);
   yield takeLatest(ACTION_TYPES.LOGOUT_FETCH_REQUESTED, fetchLogoutAdmin);
+  yield takeLatest(ACTION_TYPES.SEND_PHOTO_FETCH_REQUESTED, fetchSendPhoto);
 }
 
 export default rootSaga;

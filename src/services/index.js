@@ -59,3 +59,5 @@ function callApi(endpoint, method, data = {}) {
 /* AUTH */
 export const loginAdmin = (login, password) => callApi('/login', 'POST', {login, password});
 export const logoutAdmin = () => callApi('/logout', 'POST', {});
+
+export const sendPhoto = (photo) => callApi('/photos', 'POST', {photo});

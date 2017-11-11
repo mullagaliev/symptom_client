@@ -4,10 +4,12 @@ import Webcam from 'react-webcam';
 import {Button, Icon, Popup} from 'semantic-ui-react'
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
-import {Redirect } from 'react-router'
+import {Redirect} from 'react-router';
+import REQUEST_STATUSES from '../../constants/requestStatuses';
+
 const styles = require('./Camera.sass');
 
-const maxPhotoCount = 3;
+const maxPhotoCount = 1;
 
 class Camera extends Component {
   state = {
@@ -22,23 +24,33 @@ class Camera extends Component {
     let images = this.state.images;
     const imageSrc = this.webcam.getScreenshot();
     if (images.length < maxPhotoCount) {
+      this.props.onSend(imageSrc);
       const showImage = true;
       images.push(imageSrc);
+      return true;
       this.setState({images, showImage});
-      setTimeout(()=>{
+    }
+  };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.showImage) {
+      setTimeout(() => {
         this.setState({showImage: false});
       }, 1000)
     }
-  };
+    return true;
+  }
 
   render() {
     const {images} = this.state;
     const count = images.length;
-    if (images.length >= maxPhotoCount && this.state.showImage  === false)
+    const {requestStatus} = this.props;
+    if (requestStatus === REQUEST_STATUSES.SUCCEEDED)
       return <Redirect to="/complete"/>;
     else
       return (
         <div>
+          {this.props.requestStatus}
           <Webcam
             audio={false}
             height={'100%'}
@@ -75,8 +87,9 @@ class Camera extends Component {
           <div className="alignCenter" style={{display: this.state.showImage ? "block" : "none"}}>
             {
               Array.isArray(this.state.images) ? this.state.images.map((image, key) => {
-                if(key === this.state.images.length - 1)
-                return <img key={key} src={image} alt="" className={classNames('pulse', styles.Photo)}/>
+                if (key === this.state.images.length - 1)
+                  return <img key={key} src={image} alt=""
+                              className={classNames('pulse', styles.Photo)}/>
               }) : null
             }
           </div>

@@ -10,7 +10,10 @@ class MainPage extends Component {
     return (
       <Page
         content={
-          <Statistics/>
+          <div>
+            <h1 style={{color: 'white'}}>Статистика</h1>
+            <Statistics/>
+          </div>
         }
         footer={
           <PhotoMenu/>

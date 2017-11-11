@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Camera from '../components/Camera/Camera';
+import SendPhotoContainer from '../containers/SendPhoto/SendPhotoContainer';
 
 import Page from '../layouts/Page';
 
@@ -10,7 +10,7 @@ class CameraPage extends Component {
     return (
       <Page
         content={
-          <Camera/>
+          <SendPhotoContainer />
         }
         fullScreen={true}
         footer={

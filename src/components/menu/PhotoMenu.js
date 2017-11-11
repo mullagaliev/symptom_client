@@ -10,7 +10,7 @@ class PhotoMenu extends Component {
     return (
       <div className={styles.Menu}>
         <Button.Group fluid widths='3' size={'large'}>
-          <Button>Главная</Button>
+          <Button>Чат</Button>
           <Button disabled>----</Button>
           <Button>Настройки</Button>
         </Button.Group>
