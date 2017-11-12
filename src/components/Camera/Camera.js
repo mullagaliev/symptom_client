@@ -7,6 +7,9 @@ import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router';
 import REQUEST_STATUSES from '../../constants/requestStatuses';
 
+import CameraDevice from './CameraDevice';
+import CameraDevice2 from './CameraDevice2';
+
 const styles = require('./Camera.sass');
 
 const maxPhotoCount = 1;
@@ -23,13 +26,13 @@ class Camera extends Component {
   capture = () => {
     let images = this.state.images;
     const imageSrc = this.webcam.getScreenshot();
-    if (images.length < maxPhotoCount) {
+    // if (images.length < maxPhotoCount) {
       this.props.onSend(imageSrc);
       const showImage = true;
       images.push(imageSrc);
-      return true;
       this.setState({images, showImage});
-    }
+      return true;
+    // }
   };
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -40,7 +43,9 @@ class Camera extends Component {
     }
     return true;
   }
-
+  onUpdate(stream) {
+    document.querySelector('video').src = stream.url;
+  }
   render() {
     const {images} = this.state;
     const count = images.length;
@@ -51,6 +56,7 @@ class Camera extends Component {
       return (
         <div>
           {this.props.requestStatus}
+          {/*<CameraDevice2/>*/}
           <Webcam
             audio={false}
             height={'100%'}
@@ -67,23 +73,13 @@ class Camera extends Component {
                     style={{fontSize: "1.9rem"}}
             />
           </Link>
-          <Popup
-            trigger={
-              <Button circular
-                      icon={<Icon name={'camera retro'} color={'teal'}/>}
-                      size='massive'
-                      className={classNames('m0', styles.buttonPhoto)}
-                      style={{fontSize: "3.9rem"}}
-                      onClick={this.capture}
-              />
-            }
-            content={`${count}/${maxPhotoCount}`}
-            on='focus'
-            open={this.state.isOpen}
-            onOpen={this.handleOpen}
-            position='top center'
+          <Button circular
+                  icon={<Icon name={'camera retro'} color={'teal'}/>}
+                  size='massive'
+                  className={classNames('m0', styles.buttonPhoto)}
+                  style={{fontSize: "3.9rem"}}
+                  onClick={this.capture}
           />
-
           <div className="alignCenter" style={{display: this.state.showImage ? "block" : "none"}}>
             {
               Array.isArray(this.state.images) ? this.state.images.map((image, key) => {

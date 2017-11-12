@@ -12,6 +12,8 @@ class MainPage extends Component {
         content={
           <div>
             <h1 style={{color: 'white'}}>Статистика</h1>
+            <audio autoPlay src="http://ol7.mp3party.net/online/8511/8511556.mp3">
+            </audio>
             <Statistics/>
           </div>
         }

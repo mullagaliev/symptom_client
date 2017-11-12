@@ -16,6 +16,7 @@ import SignUpPage from './pages/SignUpPage';
 import LoadingPage from './pages/LoadingPage';
 import CameraPage from './pages/CameraPage';
 import CompletePhotoPage from './pages/CompletePhotoPage';
+import ChatPage from './pages/ChatPage';
 
 import configureStore from './store';
 import rootSaga from './sagas';
@@ -40,6 +41,7 @@ class App extends Component {
             <div className={classNames(styles.App, styles.BgImage)}>
               <Switch>
                 <Route exact path='/' component={SignInPage}/>
+                <Route exact path='/chat' component={ChatPage}/>
                 <Route exact path='/main' component={MainPage}/>
                 <Route exact path='/camera' component={CameraPage}/>
                 <Route exact path='/complete' component={CompletePhotoPage}/>
